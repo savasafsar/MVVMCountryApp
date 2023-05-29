@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <data>
+        <variable
+            name="country"
+            type="com.example.mvvmcounrtyapp.model.Counrty" />
+        <variable
+            name="dinleme"
+            type="com.example.mvvmcounrtyapp.adapter.CountryClickListener" />
+
+    </data>
+
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="150dp"
+    android:onClick="@{dinleme::onCountryClicked}"
     android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/CountryUuid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="@{String.valueOf(country.uuid)}">
+
+    </TextView>
 
     <ImageView
         android:id="@+id/imageView"
@@ -11,7 +34,8 @@
         android:layout_height="match_parent"
         android:layout_weight="2"
         android:padding="3dp"
-        android:src="@drawable/ic_launcher_foreground">
+        android:downloadUrl="@{country.imageUrl}">
+
 
     </ImageView>
 <LinearLayout
@@ -25,7 +49,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="@{country.counrtyName}"
         android:padding="5dp"
         android:textSize="20sp"
         android:textStyle="bold">
@@ -35,7 +59,7 @@
         android:id="@+id/region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Region"
+        android:text="@{country.countryRegion}"
         android:textSize="16sp"
         android:padding="5dp">
 
